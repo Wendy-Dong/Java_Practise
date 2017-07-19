@@ -9,14 +9,29 @@ public class EmployeeService {
 		Employee e5 = new Employee("Elvis George",25,1425);
 		EmployeeService empser=new EmployeeService();
 		Employee[] emparray={e1,e2,e3,e4,e5};
-		for (EmployeeService employee : emparray){
-			
+//		emparray[0].getEmpSalary();
+		for (int i=0;i<=4;i++){
+				try {
+					empser.checkEmpSalary(emparray[i]);
+				} 
+				catch (EmpSalaryException e) {
+					// TODO Auto-generated catch block
+					System.out.println("Exception");
+//					e.printStackTrace();
+				}
 		}
 	}
 	public static void checkEmpSalary(Employee emp) throws EmpSalaryException{
-			if(emp.getEmpSalary()<1000){
-				throws new EmpSalaryException("employee: "+emp.getEmpName()+"/'s salary is less than 1000.");
+		try {
+			if (emp.getEmpSalary()<1000){
+				throw new EmpSalaryException ("list all employees whoes salary is less than 1000");
 			}
+		} 
+		catch (Exception e) {
+			System.out.println("employee: "+emp.getEmpName()+"'s salary is less than 1000.");
+		}
+	}
+		
 }
 
 class Employee {
@@ -52,8 +67,8 @@ class Employee {
 
 
 class EmpSalaryException extends Exception{
-		public void EmpSalaryException(String msg){
-			}
+		public EmpSalaryException(String msg){
+			//System.out.println("Exception");
 		}
 }
 
